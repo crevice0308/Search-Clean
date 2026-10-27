@@ -1,0 +1,54 @@
+{
+  "browser": "Google Chrome for Testing 141.0.7390.54",
+  "mode": "Chrome CLI --pack-extension validation only. Extension NOT loaded; no storage context or live Google access.",
+  "source_version": "1.0.0",
+  "source_sha256": {
+    "content.css": "50eebaadf92160465a7876999ce2ec625e7a557357c735835e17ab2db0a459bf",
+    "content.js": "7fd388e35837d70878e65fcfac1213e83d85dcc425979d62daef7c83db598e66",
+    "icons/icon128.png": "2b022d782aae08e2fdda1a3cae1021a9464d2a8dda545b82c4a9f7095ae00667",
+    "icons/icon16.png": "94c1398452c2e6423b14527cb3734769c9c80907bfd7bc37ba91d860c79c8e14",
+    "icons/icon32.png": "b082372f6cd0a5e64a6e611823f9eaaf9047545535c2bb41ccb6f76e3bf638a7",
+    "icons/icon48.png": "82d123c6f95baa91d85094cdd6248bf247b3e16c872b14e25d93cd7ebe880e0c",
+    "manifest.json": "c66aad89b8e4d2c9d84a97175ca2930d0a52bd4ed1a2486e5e9a96307974958e",
+    "popup.css": "919e5729987c2431cd93ba9ff5d575558f0fb98600be3a16808ba9e560724c04",
+    "popup.html": "95cef5d03f1f027c50c85950edcc8666cb107d0a9574082da9693fc5990ac368",
+    "popup.js": "111902777adfe62c6115f98e85c089fd810770cf50568ff38733e2f2ff8e2a0e"
+  },
+  "tests": [
+    {
+      "name": "current source is accepted",
+      "expected_accept": true,
+      "observed_accept": true,
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "name": "invalid version is rejected",
+      "expected_accept": false,
+      "observed_accept": false,
+      "exit_code": 22,
+      "pass": true
+    },
+    {
+      "name": "invalid match is rejected",
+      "expected_accept": false,
+      "observed_accept": false,
+      "exit_code": 22,
+      "pass": true
+    },
+    {
+      "name": "missing script is rejected",
+      "expected_accept": false,
+      "observed_accept": false,
+      "exit_code": 22,
+      "pass": true
+    },
+    {
+      "name": "missing icon is rejected",
+      "expected_accept": false,
+      "observed_accept": false,
+      "exit_code": 22,
+      "pass": true
+    }
+  ]
+}

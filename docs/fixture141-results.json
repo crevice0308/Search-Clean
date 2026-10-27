@@ -1,0 +1,67 @@
+{
+  "engine": "141.0.7390.54",
+  "source_version": "1.0.0",
+  "source_sha256": {
+    "manifest.json": "c66aad89b8e4d2c9d84a97175ca2930d0a52bd4ed1a2486e5e9a96307974958e",
+    "content.css": "50eebaadf92160465a7876999ce2ec625e7a557357c735835e17ab2db0a459bf",
+    "content.js": "7fd388e35837d70878e65fcfac1213e83d85dcc425979d62daef7c83db598e66",
+    "popup.html": "95cef5d03f1f027c50c85950edcc8666cb107d0a9574082da9693fc5990ac368",
+    "popup.css": "919e5729987c2431cd93ba9ff5d575558f0fb98600be3a16808ba9e560724c04",
+    "popup.js": "111902777adfe62c6115f98e85c089fd810770cf50568ff38733e2f2ff8e2a0e"
+  },
+  "mode": "Headless Shell / synthetic fixture / chrome.storage mock; extension NOT loaded; live Google NOT accessed",
+  "tests": [
+    {
+      "name": "日本語・英語見出し、本文、専用枠の非表示と専用余白除去",
+      "result": "PASS"
+    },
+    {
+      "name": "通常記事・天気・地図・電卓・AIモード入口と共通祖先の維持",
+      "result": "PASS"
+    },
+    {
+      "name": "OFFでGoogle側のinline styleと本文を保ったまま復元、ONで再非表示",
+      "result": "PASS"
+    },
+    {
+      "name": "AI概要なしの結果、単語・aria-label・クラスだけの要素を維持",
+      "result": "PASS"
+    },
+    {
+      "name": "遅延追加・結果領域全体の差し替えをCSSで処理",
+      "result": "PASS"
+    },
+    {
+      "name": "data-attrid完全一致のみ処理、部分一致や汎用data-hveidは維持",
+      "result": "PASS"
+    },
+    {
+      "name": "未知の枠は共有結果を保護して本文だけ処理",
+      "result": "PASS"
+    },
+    {
+      "name": "100回切り替えと100回追加でlistener増加・追加storage読込なし",
+      "result": "PASS"
+    },
+    {
+      "name": "英語表示の検証HTMLでも同じ識別子で処理",
+      "result": "PASS"
+    },
+    {
+      "name": "ポップアップ表示、スイッチ1個、キーボード切替・保存失敗・再試行",
+      "result": "PASS"
+    },
+    {
+      "name": "fixture通信はローカル差し替え4ファイルのみ、ページ例外なし",
+      "result": "PASS"
+    }
+  ],
+  "requests": [
+    "https://search-clean.test/search?hl=ja",
+    "https://search-clean.test/search?hl=en",
+    "https://search-clean.test/popup.html",
+    "https://search-clean.test/popup.css",
+    "https://search-clean.test/popup.js"
+  ],
+  "errors": []
+}

@@ -1,0 +1,43 @@
+PASS 1: popup: missing setting defaults ON after initial read
+PASS 2: popup: saved OFF is read without changing storage
+PASS 3: popup: does not report save success before callback
+PASS 4: popup: successful save also works when callback precedes event
+PASS 5: popup: lastError write failure restores confirmed value and permits retry
+PASS 6: popup: synchronous write throw restores value and permits retry
+PASS 7: popup: lastError initial read failure stays disabled and reports failure
+PASS 8: popup: synchronous initial read throw reports failure
+PASS 9: popup: a newer storage event wins over stale initial read
+PASS 10: popup: stale initial error does not overwrite a valid newer event
+PASS 11: popup: multiple contexts receive the same saved setting
+PASS 12: popup: sync area and unrelated local keys are ignored
+PASS 13: popup: deleted/invalid stored setting restores the ON default
+PASS 14: popup: repeated change while saving cannot enqueue another write
+PASS 15: popup: latest external confirmed value survives a failed pending write
+PASS 16: popup: newer external event is preserved when an older successful write callback arrives
+PASS 17: popup: multiple external events during a failing write restore the last confirmed value
+PASS 18: content: initial missing setting applies ON
+PASS 19: content: initial saved OFF applies off marker and preserves unrelated attributes
+PASS 20: content: OFF then ON only changes the extension root marker
+PASS 21: content: 1000 toggle pairs add no listeners, DOM scans or setting reads
+PASS 22: content/popup: a saved OFF setting is read by newly created contexts
+PASS 23: content/popup: a saved ON setting is read by newly created contexts
+PASS 24: content/popup: serialized OFF storage seeds fresh restart-model contexts
+PASS 25: content/popup: serialized ON storage seeds fresh restart-model contexts
+PASS 26: content: repeated identical setting avoids duplicate attribute writes
+PASS 27: content: multiple tabs and popup receive the same saved setting
+PASS 28: content: storage event wins over stale initial snapshot
+PASS 29: content: lastError read failure fails open with one short warning
+PASS 30: content: synchronous get throw fails open
+PASS 31: content: stale read failure does not override later valid event
+PASS 32: content: BFCache pageshow rereads setting only when persisted
+PASS 33: content: latest of initial + two BFCache reads wins over old successful snapshots (ON)
+PASS 34: content: latest of initial + two BFCache reads ignores old errors (ON)
+PASS 35: content: latest of initial + two BFCache reads wins over old successful snapshots (OFF)
+PASS 36: content: latest of initial + two BFCache reads ignores old errors (OFF)
+PASS 37: content: no-root fallback registers one DOMContentLoaded listener
+PASS 38: content: non-search paths perform no reads, writes, scans or subscriptions
+PASS 39: content: sync area/unrelated changes ignored and deletion restores ON
+PASS 40: configuration: Manifest V3, storage-only permission, no background or extra access
+PASS 41: configuration: no runtime network, polling, DOM observers or page scanning
+
+41 Node mock/static tests passed. Browser rendering and live Google results are not tested here.

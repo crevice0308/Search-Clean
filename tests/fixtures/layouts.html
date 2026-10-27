@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<title>Search Clean Lite 1.0.0 synthetic layout regressions</title>
+<!-- Self-authored structural fixtures derived from documented marker
+     relationships. This is not a captured Google page. -->
+<style>
+body { font: 16px system-ui; max-width: 900px; margin: 24px auto; }
+section, article, .hdzaWe, .Kevs9.SLPe5b, .ULSxyf { border: 1px solid #999; padding: 20px; margin: 18px 0; }
+h2, h3 { margin: 8px 0; }
+</style>
+<h1>検証用の自作HTML・実Googleページではありません</h1>
+<div id="rcnt">
+  <section id="attn-full" data-attnms="tc"><h2>AIによる概要</h2><p id="attn-body">本文</p></section>
+  <div id="known-heading-frame" class="hdzaWe"><h2>AI Overview</h2><div data-attnms="tc">本文IDを使わない概要</div></div>
+  <div id="top-space" class="Kevs9 SLPe5b"><h2>AIによる概要</h2><section data-attnms="tc">上部枠の本文</section></div>
+  <div id="middle-space" class="ULSxyf"><div class="MjjYud"><section class="Wm5I1e SePcAf" data-tma="80"><div data-attnms="tc"><h2>AI Overview</h2>中段</div></section></div></div>
+  <div id="shared-must-stay" class="ULSxyf"><div class="MjjYud"><section class="Wm5I1e SePcAf" data-tma="80"><div id="shared-ai" data-attnms="tc">AI</div></section></div><article id="ordinary-shared"><h3>同じ共通枠にある通常記事</h3></article></div>
+  <section id="async-placeholder" data-async-type="folsrch" data-aim="1"><h2>AIによる概要</h2>読み込み中</section>
+  <section id="ordinary-async" data-async-type="folsrch" data-aim="0"><h2>通常の非同期カード</h2></section>
+  <section id="partial-attribute" data-attrid="about_AIOverview"><h2>AI Overviewについての説明</h2></section>
+  <article id="ordinary-title"><h3>AIによる概要 / AI Overviewとは？</h3><p>タイトルや説明文に文字列があるだけ。</p></article>
+  <section id="class-only" class="hdzaWe Wm5I1e Kevs9 SLPe5b"><h2>マーカーなしの同じクラス</h2></section>
+  <section id="weather"><h2>天気</h2><p>晴れ</p></section>
+  <section id="maps"><h2>地図</h2><p>模擬地図</p></section>
+  <section id="calculator"><h2>電卓</h2><input value="4" aria-label="計算結果"></section>
+</div>
+<section id="outside-marker" data-attnms="tc"><h2>検索結果領域の外側は維持</h2></section>
+</html>

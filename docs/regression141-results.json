@@ -1,0 +1,119 @@
+{
+  "engine": "141.0.7390.54",
+  "source_version": "1.0.0",
+  "mode": "Real Blink rendering; self-authored synthetic HTML; mocked chrome.storage; extension NOT loaded; live Google NOT accessed",
+  "source_sha256": {
+    "manifest.json": "c66aad89b8e4d2c9d84a97175ca2930d0a52bd4ed1a2486e5e9a96307974958e",
+    "content.css": "50eebaadf92160465a7876999ce2ec625e7a557357c735835e17ab2db0a459bf",
+    "content.js": "7fd388e35837d70878e65fcfac1213e83d85dcc425979d62daef7c83db598e66",
+    "popup.html": "95cef5d03f1f027c50c85950edcc8666cb107d0a9574082da9693fc5990ac368",
+    "popup.css": "919e5729987c2431cd93ba9ff5d575558f0fb98600be3a16808ba9e560724c04",
+    "popup.js": "111902777adfe62c6115f98e85c089fd810770cf50568ff38733e2f2ff8e2a0e"
+  },
+  "passed": 25,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "version is exactly 1.0.0 and CSS rule is parsed by Blink",
+      "result": "PASS"
+    },
+    {
+      "name": "data-attnms hides its complete Japanese heading and body",
+      "result": "PASS"
+    },
+    {
+      "name": "known frame plus data-attnms hides English heading without body ID",
+      "result": "PASS"
+    },
+    {
+      "name": "top Kevs9.SLPe5b frame removes its padding and margin box",
+      "result": "PASS"
+    },
+    {
+      "name": "middle sole-child chain collapses its dedicated outer frame",
+      "result": "PASS"
+    },
+    {
+      "name": "middle shared outer frame and ordinary sibling article stay visible",
+      "result": "PASS"
+    },
+    {
+      "name": "folsrch and data-aim=1 placeholder hides before overview content arrives",
+      "result": "PASS"
+    },
+    {
+      "name": "ordinary article words, partial attributes and class-only elements stay visible",
+      "result": "PASS"
+    },
+    {
+      "name": "normal weather, maps and calculator mock widgets stay visible",
+      "result": "PASS"
+    },
+    {
+      "name": "all shared result root IDs survive exact marker attributes",
+      "result": "PASS"
+    },
+    {
+      "name": "role=main container and rcnt are protected from marker misassignment",
+      "result": "PASS"
+    },
+    {
+      "name": "known frame shared with ordinary article preserves the ordinary article",
+      "result": "PASS"
+    },
+    {
+      "name": "known frame shared with bare organic h3 preserves its link",
+      "result": "PASS"
+    },
+    {
+      "name": "mixed weather, map and calculator widgets protect the named frame",
+      "result": "PASS"
+    },
+    {
+      "name": "h3 citation cards inside an AI marker do not prevent hiding its frame",
+      "result": "PASS"
+    },
+    {
+      "name": "inline display:block!important cannot expose a matched overview",
+      "result": "PASS"
+    },
+    {
+      "name": "OFF restores exact source DOM, element identity and event handlers",
+      "result": "PASS"
+    },
+    {
+      "name": "adding and removing the data-attnms attribute updates CSS automatically",
+      "result": "PASS"
+    },
+    {
+      "name": "later AI marker insertion collapses an already present named heading frame",
+      "result": "PASS"
+    },
+    {
+      "name": "same-page replacement of the entire result container is handled by CSS",
+      "result": "PASS"
+    },
+    {
+      "name": "1000 toggles and dynamic replacements do not duplicate subscriptions or storage reads",
+      "result": "PASS"
+    },
+    {
+      "name": "out-of-order initial and BFCache read completion cannot restore stale ON",
+      "result": "PASS"
+    },
+    {
+      "name": "stale failed read cannot override a more recent setting notification",
+      "result": "PASS"
+    },
+    {
+      "name": "popup keyboard operation, storage error rollback and retry use the real popup source",
+      "result": "PASS"
+    },
+    {
+      "name": "fixture network is fully intercepted and there are no uncaught page errors",
+      "result": "PASS"
+    }
+  ],
+  "intercepted_request_count": 33,
+  "errors": []
+}
