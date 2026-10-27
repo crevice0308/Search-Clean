@@ -1,5 +1,7 @@
 # Search-Clean
 
+**日本語** | [English](README.en.md)
+
 **Search Clean Lite** — Google検索の「AIによる概要」を、ブラウザー上で非表示にする拡張機能です。ポップアップのスイッチからON／OFFを切り替えられます。
 
 > 現在は **1.0.0 プレリリース**です。Chromeウェブストア・Microsoft Edge Add-onsでの審査済み製品ではありません。
