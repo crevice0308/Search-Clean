@@ -83,3 +83,11 @@ SHA-256: a3a5c3ce2663b32ff56ce3c222eec5c1b209a00c530dfbb2fb36a9414ce9381a
 ```
 
 This is not an official Google or Microsoft project. No license has been specified at this time.
+
+## In development: GitHub-based automatic updates
+
+This working branch contains an opt-in Windows native-helper prototype, not a feature
+of the published v1.0.0-preview.1 release. It is off by default and fails closed without
+trusted bootstrap configuration. No PC installation/registration, production signing
+setup, or real Windows testing has been performed. See the
+[prototype design and verification limits](docs/NATIVE-UPDATES.md).

@@ -1,0 +1,41 @@
+/* Search Clean Lite 1.0.0
+ * CSS only: no result scans, DOM observers, polling, or text matching.
+ * Source/provenance: docs/DEVELOPMENT.md. These are changeable Google markers.
+ * Default ON at document_start; storage sets the root attribute to turn OFF.
+ *
+ * :has() is restricted to named candidate boxes, never html/body/#rcnt.
+ * The middle-result outer box requires a chain of sole children.
+ * Shared result roots are excluded from EVERY branch. A candidate containing
+ * a normal article/title/widget outside a dedicated AI marker is left intact.
+ */
+html:not([data-search-clean-lite="off"]) #rcnt
+  :is(
+    #m-x-content,
+    [data-attnms],
+    div[data-attrid="AIOverview"],
+    div[data-attrid="ai_overview"],
+    [data-async-type="folsrch"][data-aim="1"],
+    :is(.hdzaWe, .Wm5I1e, .Kevs9.SLPe5b):has(
+      :is(#m-x-content, [data-attnms], [data-async-type="folsrch"][data-aim="1"])
+    ),
+    .ULSxyf:has(> .MjjYud:only-child > .Wm5I1e.SePcAf[data-tma="80"]:only-child [data-attnms])
+  ):not(#rcnt, #search, #rso, #center_col, #main, #cnt, [role="main"]):not(:has(
+    :is(article, h3, #wob_wc, #lu_map, #cwos, [data-attrid="Weather"]):not(
+      :is(#m-x-content, [data-attnms], div[data-attrid="AIOverview"], div[data-attrid="ai_overview"], [data-async-type="folsrch"][data-aim="1"])
+      :is(article, h3, #wob_wc, #lu_map, #cwos, [data-attrid="Weather"])
+    )
+  )) {
+  display: none !important;
+  /* Collapse a matched box even with inline display:block!important.
+   * Original DOM, content and inline styles remain untouched.
+   */
+  visibility: hidden !important;
+  content-visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}

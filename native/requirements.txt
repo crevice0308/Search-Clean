@@ -1,0 +1,2 @@
+# Prototype dependency; production distribution must pin reviewed wheel hashes.
+cryptography==50.0.0
