@@ -1,0 +1,72 @@
+name: Publish inspected Search Clean preview once
+on:
+  push:
+    branches: [codex/publish-search-clean-preview-1]
+permissions: {}
+concurrency:
+  group: search-clean-preview-1
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'crevice0308/Search-Clean' && github.ref == 'refs/heads/codex/publish-search-clean-preview-1' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Verify exact original ZIP and publish pre-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PYCODE'
+          import base64, hashlib, json, os, urllib.request, urllib.error
+          REPO='crevice0308/Search-Clean'
+          TAG='v1.0.0-preview.1'
+          NAME='Search-Clean-Lite-1.0.0.zip'
+          HASH='a3a5c3ce2663b32ff56ce3c222eec5c1b209a00c530dfbb2fb36a9414ce9381a'
+          assert os.environ['GITHUB_REPOSITORY']==REPO
+          assert os.environ['GITHUB_REF']=='refs/heads/codex/publish-search-clean-preview-1'
+          assert os.environ['GITHUB_EVENT_NAME']=='push'
+          assert os.environ['GITHUB_RUN_ATTEMPT']=='1'
+          TOKEN=os.environ['GH_TOKEN']
+          BASE='https://api.github.com/repos/'+REPO
+          
+          def request(url, method='GET', data=None, binary=False):
+              assert url.startswith(BASE+'/') or url.startswith('https://uploads.github.com/repos/'+REPO+'/')
+              body=data if binary else (json.dumps(data).encode() if data is not None else None)
+              req=urllib.request.Request(url,data=body,method=method,headers={'Authorization':'Bearer '+TOKEN,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/zip' if binary else 'application/json'})
+              with urllib.request.urlopen(req,timeout=60) as r: return json.load(r)
+          for suffix in ['/git/ref/tags/'+TAG, '/releases/tags/'+TAG]:
+              try: request(BASE+suffix)
+              except urllib.error.HTTPError as e:
+                  if e.code!=404: raise
+              else: raise RuntimeError('Existing tag/release; refusing overwrite')
+          source=request(BASE+'/contents/dist/'+NAME+'?ref='+os.environ['GITHUB_SHA'])
+          assert source['encoding']=='base64'
+          payload=base64.b64decode(source['content'])
+          assert len(payload)==61047 and hashlib.sha256(payload).hexdigest()==HASH
+          notes='''## Search Clean Lite 1.0.0 — Preview
+          
+          Original inspected ZIP preserved unchanged for download/storage. This is a pre-release, not a store-reviewed stable release.
+          
+          ### Install (desktop Chrome / Edge)
+          Extract the ZIP and load the `Search-Clean-Lite-1.0.0/extension` directory as an unpacked extension. Keep that directory in place. The ZIP also includes development notes and tests.
+          
+          ### Verification and limits
+          - Static source/permissions/secret-pattern review completed; no obvious external collection or bundled secrets found. This is not a security guarantee.
+          - 41 mock/static tests passed in a fresh run.
+          - The user reported the Google AI overview was hidden in their own environment. This is user-reported, not an independently observed controlled browser test.
+          - Actual Google ON/OFF behavior and persistence were not independently validated by the assistant; cloud extension loading was blocked by environment limitations. Google markup changes may break hiding.
+          - No license was added; existing archive contents remain unchanged.
+          
+          SHA-256: `'''+HASH+'`\n'
+          release=request(BASE+'/releases','POST',{'tag_name':TAG,'target_commitish':os.environ['GITHUB_SHA'],'name':'Search Clean Lite 1.0.0 Preview 1','body':notes,'draft':True,'prerelease':True,'make_latest':'false'})
+          assert release['draft'] and release['prerelease']
+          asset=request('https://uploads.github.com/repos/'+REPO+'/releases/'+str(release['id'])+'/assets?name='+NAME,'POST',payload,True)
+          assert asset['state']=='uploaded' and asset['size']==len(payload)
+          assert asset.get('digest')=='sha256:'+HASH
+          published=request(BASE+'/releases/'+str(release['id']),'PATCH',{'draft':False,'prerelease':True,'make_latest':'false'})
+          assert not published['draft'] and published['prerelease']
+          print(published['html_url'])
+          print(asset['browser_download_url'])
+          PYCODE
